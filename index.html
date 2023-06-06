@@ -110,84 +110,29 @@
             margin-top: -1px;
         }
     </style>
+    <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
+    <script src="https://unpkg.com/@picmo/popup-picker@latest/dist/umd/index.js"></script>
 </head>
 
 <body>
     <div>
         <div>内容<input type="text" id="in" value="测试"></div>
-        <div>背景<input type="text" id="bg" value="🍚"></div>
-        <div>前景<input type="text" id="fg" value="😡"></div>
+        <div>背景<input type="text" id="bg" value="⬜️">
+            <button type="button" class="emoji-button">😀</button>
+        </div>
+        <div>前景<input type="text" id="fg" value="⬛️">
+            <button type="button" class="emoji-button1">😀</button>
+        </div>
         灵敏度
         <div class="range-wrap">
             <div class="range-value" id="rangeV"></div>
             <input type="range" id="thd" min="0" max="255" value="200">
         </div>
-        <button id="draw" onclick="draw()">绘制</button>
+        <button type="button" id="draw" onclick="draw()">绘制</button>
     </div>
     <canvas id="content"></canvas>
     <div>
         <div id="ta"></div>
     </div>
-    <script>
-        document.fonts.load(`12px pixel`, "测试").catch((e) => {
-            console.error(e);
-        });
-
-        const
-            range = document.getElementById('thd'),
-            rangeV = document.getElementById('rangeV'),
-            setValue = (e) => {
-                const
-                    newValue = Number((range.value - range.min) * 100 / (range.max - range.min)),
-                    newPosition = 10 - (newValue * 0.2);
-                rangeV.innerHTML = `<span>${range.value}</span>`;
-                rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
-
-                if (e.type === 'input') {
-                    draw();
-                }
-            };
-        document.addEventListener("DOMContentLoaded", setValue);
-        range.addEventListener('input', setValue);
-
-        const canvas = document.getElementById('content');
-        canvas.width = 240;
-        canvas.height = 12;
-
-        function draw() {
-            //获得 2d 上下文对象
-            const ctx = canvas.getContext('2d');
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const text = document.getElementById('in').value;
-            const bgtext = document.getElementById('bg').value;
-            const fgtext = document.getElementById('fg').value;
-            const thd = document.getElementById('thd').value;
-            const l = text.length * 12;
-
-            ctx.fillStyle = "rgb(0, 0, 0)";
-            ctx.fillRect(0, 0, l, 12);
-
-
-            ctx.font = "12px pixel"
-            ctx.fillStyle = "rgb(255, 255, 255)";
-            ctx.textBaseline = 'top';
-
-            ctx.fillText(text, 0, 0);
-
-            const myImageData = ctx.getImageData(0, 0, l, 12);
-            console.log(myImageData);
-            let v = '';
-            for (let i = 0; i < 12; i++) {
-                for (let j = 0; j < l; j++) {
-                    const n = i * l * 4 + j * 4;
-                    v += myImageData.data[n] > thd ? fgtext : bgtext;
-                }
-                v += '\n';
-            }
-            console.log(v);
-            document.getElementById("ta").innerText = v;
-        }
-    </script>
+    <script src="bundle.js"></script>
 </body>
