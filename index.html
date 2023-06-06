@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <style>
+        @font-face {
+            font-family: "pixel";
+            src: url("ark-pixel-font-12px-monospaced.ttf");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid grey;
+        }
+
+        #ta {
+            /* width: 288px; */
+            height: 144px;
+            font-size: 12px;
+            line-height: 12px;
+            padding: 0;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>内容<input type="text" id="in" value="测试"></div>
+        <div>背景<input type="text" id="bg" value="🍚"></div>
+        <div>前景<input type="text" id="fg" value="😡"></div>
+        <button id="draw" onclick="draw()">绘制</button>
+    </div>
+    <canvas id="content"></canvas>
+    <div>
+        <div id="ta"></div>
+    </div>
+    <script>
+        document.fonts.load(`12px pixel`, "测试").catch((e) => {
+            console.error(e);
+        });
+
+        const canvas = document.getElementById('content');
+        canvas.width = 240;
+        canvas.height = 120;
+
+        function draw() {
+            //获得 2d 上下文对象
+            const ctx = canvas.getContext('2d');
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const text = document.getElementById('in').value;
+            const bgtext = document.getElementById('bg').value;
+            const fgtext = document.getElementById('fg').value;
+            const l = text.length * 12;
+
+            ctx.fillStyle = "rgb(0, 0, 0)";
+            ctx.fillRect(0, 0, l, 12);
+
+
+            ctx.font = "12px pixel"
+            ctx.fillStyle = "rgb(255, 255, 255)";
+            ctx.textBaseline = 'top';
+
+            ctx.fillText(text, 0, 0);
+
+            const myImageData = ctx.getImageData(0, 0, l, 12);
+            console.log(myImageData);
+            let v = '';
+            for (let i = 0; i < 12; i++) {
+                for (let j = 0; j < l; j++) {
+                    const n = i * l * 4 + j * 4;
+                    v += myImageData.data[n] > 200 ? fgtext : bgtext;
+                }
+                v += '\n';
+            }
+            console.log(v);
+            document.getElementById("ta").innerText = v;
+        }
+    </script>
+</body>
