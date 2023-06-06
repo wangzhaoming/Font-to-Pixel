@@ -11,21 +11,30 @@
         }
 
         body {
-            padding: 0;
+            padding: 10px;
             margin: 0;
         }
 
         canvas {
-            border: 1px solid grey;
+            /* border: 1px solid grey; */
+            margin-top: 20px;
+            width: 1200px;
+            height: 60px;
         }
+
+        #in {
+            font-family: 'pixel';
+        }
+
 
         #ta {
             /* width: 288px; */
+            margin-top: 20px;
             height: 144px;
             font-size: 12px;
             line-height: 12px;
             padding: 0;
-            border: 1px solid grey;
+            /* border: 1px solid grey; */
         }
     </style>
 </head>
@@ -35,6 +44,7 @@
         <div>内容<input type="text" id="in" value="测试"></div>
         <div>背景<input type="text" id="bg" value="🍚"></div>
         <div>前景<input type="text" id="fg" value="😡"></div>
+        <div>灵敏度<input type="range" id="thd" min="0" max="255" value="200"></div>
         <button id="draw" onclick="draw()">绘制</button>
     </div>
     <canvas id="content"></canvas>
@@ -48,7 +58,7 @@
 
         const canvas = document.getElementById('content');
         canvas.width = 240;
-        canvas.height = 120;
+        canvas.height = 12;
 
         function draw() {
             //获得 2d 上下文对象
@@ -59,6 +69,7 @@
             const text = document.getElementById('in').value;
             const bgtext = document.getElementById('bg').value;
             const fgtext = document.getElementById('fg').value;
+            const thd = document.getElementById('thd').value;
             const l = text.length * 12;
 
             ctx.fillStyle = "rgb(0, 0, 0)";
@@ -77,7 +88,7 @@
             for (let i = 0; i < 12; i++) {
                 for (let j = 0; j < l; j++) {
                     const n = i * l * 4 + j * 4;
-                    v += myImageData.data[n] > 200 ? fgtext : bgtext;
+                    v += myImageData.data[n] > thd ? fgtext : bgtext;
                 }
                 v += '\n';
             }
