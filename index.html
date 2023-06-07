@@ -130,8 +130,15 @@
             margin-left: -5px;
             margin-top: -1px;
         }
+
         .picmo__popupContainer {
             z-index: 9999;
+        }
+
+        @media (max-width: 768px) {
+            .picmo__popupContainer {
+                scale: 0.8;
+            }
         }
     </style>
     <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>

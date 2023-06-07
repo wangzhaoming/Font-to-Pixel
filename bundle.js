@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const windowWidth = window.innerWidth;
   const options = {};
   if (windowWidth < 768) {
-    options.visibleRows = 5;
-    options.emojisPerRow = 4;
+    options.position = {
+      left: '0px',
+      top: '100px'
+    };
   }
 
   const bgEmojiPicker = createPopup(options, {
