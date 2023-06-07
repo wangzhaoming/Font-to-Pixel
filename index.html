@@ -8,12 +8,6 @@
     <title>Font to Pixel</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700"
-        rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Main CSS -->
     <link href="./assets/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
@@ -171,6 +165,10 @@
             width: 300px;
             max-width: 100%;
         }
+
+        .col-2, .col-3 {
+            padding-right: 5px !important;
+        }
     </style>
     <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
     <script src="https://unpkg.com/@picmo/popup-picker@latest/dist/umd/index.js"></script>
@@ -230,28 +228,28 @@ NAVBAR
                     <div class="col-md-12 pt-6 pb-4 align-self-center">
                         <div>
                             <div class="row align-items-center">
-                                <span class="col-3">内容</span>
-                                <div class="col-9">
+                                <span class="col-3 col-md-2">内容</span>
+                                <div class="col-9 col-md-10">
                                     <input type="text" id="in" value="测试">
                                 </div>
                             </div>
                             <div class="row align-items-center">
-                                <span class="col-3">背景</span>
-                                <div class="col-9">
+                                <span class="col-3 col-md-2">背景</span>
+                                <div class="col-9 col-md-10">
                                     <input type="text" maxlength="1" id="bg" value="⬜️">
                                     <button type="button" class="emoji-button-bg">😀</button>
                                 </div>
                             </div>
                             <div class="row align-items-center">
-                                <span class="col-3">前景</span>
-                                <div class="col-9">
+                                <span class="col-3 col-md-2">前景</span>
+                                <div class="col-9 col-md-10">
                                     <input type="text" maxlength="1" id="fg" value="⬛️">
                                     <button type="button" class="emoji-button-fg">😀</button>
                                 </div>
                             </div>
                             <div class="row align-items-center mt-4">
-                                <span class="col-3">灵敏度</span>
-                                <div class="col-9">
+                                <span class="col-3 col-md-2">灵敏度</span>
+                                <div class="col-9 col-md-10">
                                     <div class="range-wrap">
                                         <div class="range-value" id="rangeV"></div>
                                         <input type="range" id="thd" min="0" max="255" value="200">
