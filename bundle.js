@@ -101,9 +101,17 @@ function draw() {
   const bgtext = document.getElementById('bg').value;
   const fgtext = document.getElementById('fg').value;
   const thd = document.getElementById('thd').value;
-  const colPixels = text.length * 12;
-  const rowPixels = 1 * 12;
+  const size = parseInt(document.querySelector('input[name="size"]:checked').value);
+  const direction = document.querySelector('input[name="direction"]:checked').value;
 
+  let colPixels = text.length * size;
+  let rowPixels = 1 * size;
+  let textToDraw = [text];
+  if (direction === 'v') {
+    rowPixels = text.length * size;
+    colPixels = 1 * size;
+    textToDraw = text.split('')
+  }
 
   canvas.width = colPixels;
   canvas.height = rowPixels;
@@ -117,19 +125,21 @@ function draw() {
   }
 
   ctx.fillStyle = "rgb(0, 0, 0)";
-  ctx.fillRect(0, 0, colPixels, 12);
+  ctx.fillRect(0, 0, colPixels, rowPixels);
 
 
-  ctx.font = "12px pixel"
+  ctx.font = `${size}px pixel`
   ctx.fillStyle = "rgb(255, 255, 255)";
   ctx.textBaseline = 'top';
 
-  ctx.fillText(text, 0, 0);
+  for (let i = 0; i < textToDraw.length; i++) {
+    ctx.fillText(textToDraw[i], 0, i * size);
+  }
 
-  const myImageData = ctx.getImageData(0, 0, colPixels, 12);
+  const myImageData = ctx.getImageData(0, 0, colPixels, rowPixels);
   console.log(myImageData);
   let v = '';
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < rowPixels; i++) {
     for (let j = 0; j < colPixels; j++) {
       const n = i * colPixels * 4 + j * 4;
       v += myImageData.data[n] > thd ? fgtext : bgtext;

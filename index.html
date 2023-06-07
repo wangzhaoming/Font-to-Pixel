@@ -17,6 +17,8 @@
     <!-- Main CSS -->
     <link href="./assets/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/css-toggle-switch@latest/dist/toggle-switch.css" />
 
 
     <style>
@@ -54,7 +56,7 @@
         }
 
         input[type=text] {
-            width: 200px;
+            width: 160px;
         }
 
         input[type=range] {
@@ -140,6 +142,11 @@
                 scale: 0.8;
             }
         }
+
+        .switch-block {
+            width: 300px;
+            max-width: 100%;
+        }
     </style>
     <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
     <script src="https://unpkg.com/@picmo/popup-picker@latest/dist/umd/index.js"></script>
@@ -202,17 +209,66 @@ HEADER
                 <div class="row justify-content-between">
                     <div class="col-md-12 pt-6 pb-4 align-self-center">
                         <div>
-                            <div class="mb-1 pt-1">内容<input type="text" id="in" value="测试"></div>
-                            <div class="mb-1">背景<input type="text" maxlength="1" id="bg" value="⬜️">
-                                <button type="button" class="emoji-button-bg">😀</button>
+                            <div class="row align-items-center">
+                                <span class="col-3">内容</span>
+                                <div class="col-9">
+                                    <input type="text" id="in" value="测试">
+                                </div>
                             </div>
-                            <div class="mb-1">前景<input type="text" maxlength="1" id="fg" value="⬛️">
-                                <button type="button" class="emoji-button-fg">😀</button>
+                            <div class="row align-items-center">
+                                <span class="col-3">背景</span>
+                                <div class="col-9">
+                                    <input type="text" maxlength="1" id="bg" value="⬜️">
+                                    <button type="button" class="emoji-button-bg">😀</button>
+                                </div>
                             </div>
-                            灵敏度
-                            <div class="range-wrap">
-                                <div class="range-value" id="rangeV"></div>
-                                <input type="range" id="thd" min="0" max="255" value="200">
+                            <div class="row align-items-center">
+                                <span class="col-3">前景</span>
+                                <div class="col-9">
+                                    <input type="text" maxlength="1" id="fg" value="⬛️">
+                                    <button type="button" class="emoji-button-fg">😀</button>
+                                </div>
+                            </div>
+                            <div class="row align-items-center mt-4">
+                                <span class="col-3">灵敏度</span>
+                                <div class="col-9">
+                                    <div class="range-wrap">
+                                        <div class="range-value" id="rangeV"></div>
+                                        <input type="range" id="thd" min="0" max="255" value="200">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <span class="col-3">大小</span>
+                                <div class="col-9">
+                                    <div class="switch-toggle switch-block mb-1 switch-ios">
+                                        <input id="s8" name="size" type="radio" value="8">
+                                        <label for="s8" onclick="">8x8</label>
+        
+                                        <input id="s10" name="size" type="radio" value="10">
+                                        <label for="s10" onclick="">10x10</label>
+        
+                                        <input id="s12" name="size" type="radio" value="12" checked>
+                                        <label for="s12" onclick="">12x12</label>
+        
+                                        <input id="s16" name="size" type="radio" value="16">
+                                        <label for="s16" onclick="">16x16</label>
+                                        <a></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <span class="col-3">方向</span>
+                                <div class="col-9">
+                                    <div class="switch-toggle switch-block mb-1 switch-ios">
+                                        <input id="d_h" name="direction" type="radio" value="h" checked>
+                                        <label for="d_h" onclick="">水平</label>
+        
+                                        <input id="d_v" name="direction" type="radio" value="v">
+                                        <label for="d_v" onclick="">垂直</label>
+                                        <a></a>
+                                    </div>
+                                </div>
                             </div>
                             <button type="button" id="draw" onclick="draw()">绘制</button>
                             <button type="button" id="copy" onclick="copy()">复制</button>
