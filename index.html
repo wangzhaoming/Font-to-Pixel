@@ -16,6 +16,8 @@
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- Main CSS -->
     <link href="./assets/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 
     <style>
         @font-face {
@@ -31,10 +33,9 @@
         }
 
         canvas {
-            /* border: 1px solid grey; */
             margin-top: 20px;
-            width: 1200px;
-            height: 60px;
+            /* width: 1200px;
+            height: 60px; */
         }
 
         #in {
@@ -43,13 +44,17 @@
 
 
         #ta {
-            /* width: 288px; */
+            width: 100%;
             margin-top: 20px;
             height: 144px;
-            font-size: 12px;
-            line-height: 12px;
+            font-size: 10px;
+            line-height: 10px;
             padding: 0;
-            /* border: 1px solid grey; */
+            overflow: auto;
+        }
+
+        input[type=text] {
+            width: 200px;
         }
 
         input[type=range] {
@@ -88,6 +93,7 @@
 
         .range-wrap {
             width: 500px;
+            max-width: 100%;
             position: relative;
         }
 
@@ -185,16 +191,16 @@ HEADER
 --------------------------------------->
     <div class="container">
         <div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
-            <div class="pl-4 pr-0 h-100 tofront">
+            <div class="pl-0 pr-0 h-100 tofront">
                 <div class="row justify-content-between">
                     <div class="col-md-12 pt-6 pb-4 align-self-center">
                         <div>
-                            <div>内容<input type="text" id="in" value="测试"></div>
-                            <div>背景<input type="text" maxlength="1" id="bg" value="⬜️">
-                                <button type="button" class="emoji-button">😀</button>
+                            <div class="mb-1 pt-1">内容<input type="text" id="in" value="测试"></div>
+                            <div class="mb-1">背景<input type="text" maxlength="1" id="bg" value="⬜️">
+                                <button type="button" class="emoji-button-bg">😀</button>
                             </div>
-                            <div>前景<input type="text" maxlength="1" id="fg" value="⬛️">
-                                <button type="button" class="emoji-button1">😀</button>
+                            <div class="mb-1">前景<input type="text" maxlength="1" id="fg" value="⬛️">
+                                <button type="button" class="emoji-button-fg">😀</button>
                             </div>
                             灵敏度
                             <div class="range-wrap">
@@ -202,9 +208,10 @@ HEADER
                                 <input type="range" id="thd" min="0" max="255" value="200">
                             </div>
                             <button type="button" id="draw" onclick="draw()">绘制</button>
+                            <button type="button" id="copy" onclick="copy()">复制</button>
                         </div>
-                        <canvas id="content"></canvas>
-                        <div>
+                        <div class="w-100">
+                            <canvas id="content"></canvas>
                             <div id="ta"></div>
                         </div>
                     </div>
@@ -244,6 +251,7 @@ JAVASCRIPTS
     <script src="./assets/js/vendor/popper.min.js" type="text/javascript"></script>
     <script src="./assets/js/vendor/bootstrap.min.js" type="text/javascript"></script>
     <script src="./assets/js/functions.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="bundle.js"></script>
 </body>
 
