@@ -28,7 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const bgEmojiTxt = document.querySelector('#bg');
   const bgEmojiTrigger = document.querySelector('.emoji-button-bg');
 
-  const bgEmojiPicker = createPopup({}, {
+  const windowWidth = window.innerWidth;
+  const options = {};
+  if (windowWidth < 768) {
+    options.visibleRows = 5;
+    options.emojisPerRow = 4;
+  }
+
+  const bgEmojiPicker = createPopup(options, {
     referenceElement: bgEmojiTrigger,
     triggerElement: bgEmojiTrigger,
     position: 'right-end'
@@ -45,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fgEmojiTxt = document.querySelector('#fg');
   const fgEmojiTrigger = document.querySelector('.emoji-button-fg');
 
-  const fgEmojiPicker = createPopup({}, {
+  const fgEmojiPicker = createPopup(options, {
     referenceElement: fgEmojiTrigger,
     triggerElement: fgEmojiTrigger,
     position: 'right-end'
