@@ -1,5 +1,17 @@
 // load font
-document.fonts.load(`12px pixel`, "测试").catch((e) => {
+document.fonts.load(`12px pixel7`, "测试").catch((e) => {
+  console.error(e);
+});
+document.fonts.load(`12px pixel8`, "测试").catch((e) => {
+  console.error(e);
+});
+document.fonts.load(`12px pixel10`, "测试").catch((e) => {
+  console.error(e);
+});
+document.fonts.load(`12px pixel12`, "测试").catch((e) => {
+  console.error(e);
+});
+document.fonts.load(`12px pixel16`, "测试").catch((e) => {
   console.error(e);
 });
 
@@ -128,7 +140,7 @@ function draw() {
   ctx.fillRect(0, 0, colPixels, rowPixels);
 
 
-  ctx.font = `${size}px pixel`
+  ctx.font = `${size}px pixel${size}`;
   ctx.fillStyle = "rgb(255, 255, 255)";
   ctx.textBaseline = 'top';
 

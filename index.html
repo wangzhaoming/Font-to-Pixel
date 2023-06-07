@@ -23,8 +23,32 @@
 
     <style>
         @font-face {
-            font-family: "pixel";
-            src: url("ark-pixel-font-12px-monospaced.ttf");
+            font-family: "pixel7";
+            src: url("assets/fonts/ChillBitmap7x.ttf");
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "pixel8";
+            src: url("assets/fonts/quan.ttf");
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "pixel10";
+            src: url("assets/fonts/BestTen-DOT.otf");
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "pixel12";
+            src: url("assets/fonts/ark-pixel-font-12px-monospaced.ttf");
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "pixel16";
+            src: url("assets/fonts/VonwaonBitmap-16px.ttf");
             font-weight: normal;
             font-style: normal;
         }
@@ -199,10 +223,6 @@ NAVBAR
     </nav>
     <!-- End Navbar -->
 
-
-    <!--------------------------------------
-HEADER
---------------------------------------->
     <div class="container">
         <div class="jumbotron jumbotron-fluid mb-3 pt-0 pb-0 bg-lightblue position-relative">
             <div class="pl-0 pr-0 h-100 tofront">
@@ -239,15 +259,18 @@ HEADER
                                 </div>
                             </div>
                             <div class="row align-items-center">
-                                <span class="col-3">大小</span>
-                                <div class="col-9">
+                                <span class="col-2">大小</span>
+                                <div class="col-10">
                                     <div class="switch-toggle switch-block mb-1 switch-ios">
+                                        <input id="s7" name="size" type="radio" value="7">
+                                        <label for="s7" onclick="">7x7</label>
+        
                                         <input id="s8" name="size" type="radio" value="8">
                                         <label for="s8" onclick="">8x8</label>
-        
-                                        <input id="s10" name="size" type="radio" value="10">
+
+                                        <input id="s10" name="size" type="radio" value="10" checked>
                                         <label for="s10" onclick="">10x10</label>
-        
+
                                         <input id="s12" name="size" type="radio" value="12" checked>
                                         <label for="s12" onclick="">12x12</label>
         
@@ -258,8 +281,8 @@ HEADER
                                 </div>
                             </div>
                             <div class="row align-items-center">
-                                <span class="col-3">方向</span>
-                                <div class="col-9">
+                                <span class="col-2">方向</span>
+                                <div class="col-10">
                                     <div class="switch-toggle switch-block mb-1 switch-ios">
                                         <input id="d_h" name="direction" type="radio" value="h" checked>
                                         <label for="d_h" onclick="">水平</label>
@@ -282,9 +305,6 @@ HEADER
             </div>
         </div>
     </div>
-    <!-- End Header -->
-
-
 
     <!--------------------------------------
 FOOTER
