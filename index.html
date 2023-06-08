@@ -22,24 +22,28 @@
             font-weight: normal;
             font-style: normal;
         }
+
         @font-face {
             font-family: "pixel8";
             src: url("assets/fonts/quan.ttf");
             font-weight: normal;
             font-style: normal;
         }
+
         @font-face {
             font-family: "pixel10";
             src: url("assets/fonts/BestTen-DOT.otf");
             font-weight: normal;
             font-style: normal;
         }
+
         @font-face {
             font-family: "pixel12";
             src: url("assets/fonts/ark-pixel-font-12px-monospaced.ttf");
             font-weight: normal;
             font-style: normal;
         }
+
         @font-face {
             font-family: "pixel16";
             src: url("assets/fonts/VonwaonBitmap-16px.ttf");
@@ -166,13 +170,24 @@
             max-width: 100%;
         }
 
-        .col-2, .col-3 {
+        .col-2,
+        .col-3 {
             padding-right: 5px !important;
         }
     </style>
     <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
     <script src="https://unpkg.com/@picmo/popup-picker@latest/dist/umd/index.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2184KEMDCN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2184KEMDCN');
+    </script>
 </head>
 
 <body>
@@ -262,7 +277,7 @@ NAVBAR
                                     <div class="switch-toggle switch-block mb-1 switch-ios">
                                         <input id="s7" name="size" type="radio" value="7">
                                         <label for="s7" onclick="">7px</label>
-        
+
                                         <input id="s8" name="size" type="radio" value="8">
                                         <label for="s8" onclick="">8px</label>
 
@@ -271,7 +286,7 @@ NAVBAR
 
                                         <input id="s12" name="size" type="radio" value="12" checked>
                                         <label for="s12" onclick="">12px</label>
-        
+
                                         <input id="s16" name="size" type="radio" value="16">
                                         <label for="s16" onclick="">16px</label>
                                         <a></a>
@@ -284,7 +299,7 @@ NAVBAR
                                     <div class="switch-toggle switch-block mb-1 switch-ios">
                                         <input id="d_h" name="direction" type="radio" value="h" checked>
                                         <label for="d_h" onclick="">水平</label>
-        
+
                                         <input id="d_v" name="direction" type="radio" value="v">
                                         <label for="d_v" onclick="">垂直</label>
                                         <a></a>
