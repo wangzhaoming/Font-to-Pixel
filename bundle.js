@@ -87,7 +87,7 @@ function copy() {
 
   if (!text) {
     Toastify({
-      text: "请先绘制",
+      text: "Please draw image first.",
       duration: 2000
     }).showToast();
     return;
@@ -95,7 +95,7 @@ function copy() {
 
   navigator.clipboard.writeText(text);
   Toastify({
-    text: "Emoji Copied!",
+    text: "Emoji Copied.",
     duration: 2000
   }).showToast();
 }
@@ -116,11 +116,29 @@ function draw() {
   const size = parseInt(document.querySelector('input[name="size"]:checked').value);
   const direction = document.querySelector('input[name="direction"]:checked').value;
 
-  let colPixels = text.length * size;
+  let len = 0;
+  for (let i = 0; i< text.length; i++) {
+    const code = text.charCodeAt(i);
+    if (code < 256) {
+      // ascii字符仅占半宽
+      if (size === 8) {
+        len += 0.625;
+      }
+      else {
+        len += 0.5;
+      }
+    }
+    else {
+      len++;
+    }
+  }
+
+
+  let colPixels = len * size; // 横向时英文字符仅占半宽
   let rowPixels = 1 * size;
   let textToDraw = [text];
   if (direction === 'v') {
-    rowPixels = text.length * size;
+    rowPixels = text.length * size; // 纵向中英文同等处理
     colPixels = 1 * size;
     textToDraw = text.split('')
   }
